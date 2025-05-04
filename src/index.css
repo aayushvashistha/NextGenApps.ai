@@ -31,6 +31,20 @@ body {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
+.button-custom {
+  background-color: #1E40AF; /* Indigo blue */
+  color: #FFFFFF;            /* White text */
+  padding: 16px 24px;        /* Padding for a better button size */
+  font-weight: bold;         /* Bold text */
+  border-radius: 9999px;     /* Rounded corners */
+  width: auto;               /* Adjust width if it's set to 100% */
+  transition: background-color 0.3s ease;
+}
+
+.button-custom:hover {
+  background-color: #1E3A8A; /* Darker blue on hover */
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;

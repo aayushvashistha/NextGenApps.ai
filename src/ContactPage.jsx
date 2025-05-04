@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { db } from "./firebase"; // path may vary
 import { collection, addDoc, Timestamp } from "firebase/firestore";
+import './index.css'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -87,12 +88,9 @@ export default function ContactPage() {
             </div>
 
             <div className="text-center">
-              <button
-                type="submit"
-                className="inline-block w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-xl transition duration-300"
-              >
-                Send Message
-              </button>
+            <button type="submit" className="button-custom">
+              Send Message
+            </button>
             </div>
           </form>
         )}

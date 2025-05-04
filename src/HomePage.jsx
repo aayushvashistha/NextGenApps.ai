@@ -3,11 +3,12 @@ import heroImage from "./images/hero-image.jpg";
 import teamImage from "./images/team-image.jpg";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import GoogleLogin from "./Login"
+import GoogleLogin from "./Login";
 
 export default function HomePage() {
 
   const [user, setUser] = useState(null);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-white to-blue-50 text-gray-800 font-sans overflow-x-hidden">
@@ -20,13 +21,26 @@ export default function HomePage() {
             <a href="#about" className="hover:underline hover:text-yellow-300 transition">About</a>
             <a href="#features" className="hover:underline hover:text-yellow-300 transition">Features</a>
             <Link to="/contact" className="hover:underline hover:text-yellow-300 transition">Contact</Link>
-            {user ? (
-              <div className="flex items-center space-x-4">
-                <img src={user.photoURL} alt="User Profile" className="w-10 h-10 rounded-full" />
-                <span className="text-white font-semibold">{user.displayName}</span>
-              </div>
-            ) : (
-              <GoogleLogin setUser={setUser} />
+            {!user ? (
+                <GoogleLogin user={user} setUser={setUser} />
+                ) : (
+                <div className="relative ml-4">
+                    <img
+                    src={user.photoURL}
+                    alt="Profile"
+                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                    className="w-8 h-8 rounded-full cursor-pointer border-2 border-white"
+                    />
+                    {dropdownOpen && (
+                    <div className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg z-50">
+                        <div className="px-4 py-2 text-sm text-gray-800 font-semibold">
+                        {user.displayName}
+                        </div>
+                        <hr />
+                        <GoogleLogin user={user} setUser={setUser} />
+                    </div>
+                    )}
+                </div>
             )}
           </nav>
         </div>
