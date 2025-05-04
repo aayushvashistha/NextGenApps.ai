@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { db } from "./firebase"; // path may vary
+import { collection, addDoc, Timestamp } from "firebase/firestore";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -9,9 +11,29 @@ export default function ContactPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.message) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    try {
+      await addDoc(collection(db, "messages"), {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        createdAt: Timestamp.now(),
+      });
+
+      setSubmitted(true);
+      setFormData({ name: "", email: "", message: "" });
+    } catch (err) {
+      console.error("Error saving message:", err);
+      alert("An error occurred. Please try again.");
+    }
   };
 
   return (
@@ -22,6 +44,7 @@ export default function ContactPage() {
           <p className="text-green-600 text-center text-xl">Thank you for reaching out! We'll get back to you soon.</p>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Name */}
             <div>
               <label htmlFor="name" className="block text-lg font-medium text-gray-700">Name</label>
               <input
@@ -35,6 +58,7 @@ export default function ContactPage() {
               />
             </div>
 
+            {/* Email */}
             <div>
               <label htmlFor="email" className="block text-lg font-medium text-gray-700">Email</label>
               <input
@@ -48,6 +72,7 @@ export default function ContactPage() {
               />
             </div>
 
+            {/* Message */}
             <div>
               <label htmlFor="message" className="block text-lg font-medium text-gray-700">Message</label>
               <textarea
