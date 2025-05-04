@@ -7,5 +7,5 @@ export default defineConfig({
   plugins: [react(),
     tailwindcss(),
   ],
-  base: "/NextGenApps.ai/"
+  // base: "/NextGenApps.ai/"
 })
