@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import heroImage from "./images/hero-image.jpg";
 import teamImage from "./images/team-image.jpg";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import GoogleLogin from "./Login"
 
 export default function HomePage() {
+
+  const [user, setUser] = useState(null);
+
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-white to-blue-50 text-gray-800 font-sans overflow-x-hidden">
       <header className="bg-gradient-to-r from-indigo-800 to-purple-600 text-white px-8 py-6 shadow-xl sticky top-0 z-50">
@@ -12,10 +16,18 @@ export default function HomePage() {
           <motion.h1 className="text-4xl font-extrabold tracking-tight mb-4 md:mb-0" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
             NextGenApps
           </motion.h1>
-          <nav className="space-x-8 text-lg">
+          <nav className="space-x-8 text-lg flex items-center">
             <a href="#about" className="hover:underline hover:text-yellow-300 transition">About</a>
             <a href="#features" className="hover:underline hover:text-yellow-300 transition">Features</a>
             <Link to="/contact" className="hover:underline hover:text-yellow-300 transition">Contact</Link>
+            {user ? (
+              <div className="flex items-center space-x-4">
+                <img src={user.photoURL} alt="User Profile" className="w-10 h-10 rounded-full" />
+                <span className="text-white font-semibold">{user.displayName}</span>
+              </div>
+            ) : (
+              <GoogleLogin setUser={setUser} />
+            )}
           </nav>
         </div>
       </header>
