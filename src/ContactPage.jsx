@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { db } from "./firebase"; // path may vary
+import { db } from "./firebase";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
-import './index.css'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -55,7 +54,7 @@ export default function ContactPage() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-3"
+                className="mt-1 block w-full rounded-xl border-gray-300 text-gray-900 bg-white shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-3"
               />
             </div>
 
@@ -69,7 +68,7 @@ export default function ContactPage() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-3"
+                className="mt-1 block w-full rounded-xl border-gray-300 text-gray-900 bg-white shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-3"
               />
             </div>
 
@@ -83,14 +82,14 @@ export default function ContactPage() {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                className="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-3"
+                className="mt-1 block w-full rounded-xl border-gray-300 text-gray-900 bg-white shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-3"
               ></textarea>
             </div>
 
             <div className="text-center">
-            <button type="submit" className="button-custom">
-              Send Message
-            </button>
+              <button type="submit" className="button-custom">
+                Send Message
+              </button>
             </div>
           </form>
         )}
