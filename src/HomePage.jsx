@@ -18,9 +18,9 @@ export default function HomePage() {
             NextGenApps
           </motion.h1>
           <nav className="space-x-8 text-lg flex items-center">
-            <a href="#about" className="hover:underline hover:text-yellow-300 transition">About</a>
-            <a href="#features" className="hover:underline hover:text-yellow-300 transition">Features</a>
-            <Link to="/contact" className="hover:underline hover:text-yellow-300 transition">Contact</Link>
+            <a href="#about" className="hover:text-yellow-300 transition">About</a>
+            <a href="#features" className="hover:text-yellow-300 transition">Features</a>
+            <Link to="/contact" className="hover:text-yellow-300 transition">Contact</Link>
             {!user ? (
                 <GoogleLogin user={user} setUser={setUser} />
                 ) : (
@@ -65,7 +65,12 @@ export default function HomePage() {
         </section>
 
         <section id="features" className="mb-24">
-          <h3 className="text-4xl font-bold text-center text-purple-700 mb-12">What We Offer</h3>
+        <h3 className="text-4xl font-bold text-center text-purple-700 mb-12 animate-fade-in">
+          What We Offer 
+          <span className="ml-4 inline-block bg-yellow-300 text-yellow-900 text-sm font-semibold px-3 py-1 rounded-full animate-pulse">
+            Coming Soon
+          </span>
+        </h3>
           <div className="grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
@@ -124,7 +129,7 @@ export default function HomePage() {
       </main>
 
       <footer className="bg-gray-900 text-white text-center p-8 mt-24 rounded-t-3xl">
-        <p className="text-sm">&copy; {new Date().getFullYear()} NextGenApps.ai. All rights reserved.</p>
+        <p className="text-sm">&copy; {new Date().getFullYear()} NextGenApps INC. All rights reserved.</p>
       </footer>
     </div>
   );
