@@ -1,7 +1,7 @@
 import { useEffect, useCallback, useRef, useState } from "react";
 import { toast } from "react-toastify";
 
-const useInactivityLogout = (user, onLogout, timeout = 1.2 * 60 * 1000, warningTime = 60 * 1000) => {
+const useInactivityLogout = (user, onLogout, timeout = 10 * 60 * 1000, warningTime = 60 * 1000) => {
   const [remainingTime, setRemainingTime] = useState(warningTime);
   const logoutTimerRef = useRef(null);
   const warningTimerRef = useRef(null);
