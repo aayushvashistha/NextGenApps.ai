@@ -3,7 +3,7 @@ import { signInWithPopup, signOut } from "firebase/auth";
 import { auth, provider } from "./firebase";
 import { FcGoogle } from "react-icons/fc";
 import { FiLogOut } from "react-icons/fi";
-import useInactivityLogout from "./hooks/useInactivityLogout";
+import useInactivityLogout from "./useInactivityLogout";
 import { useAuth } from "./AuthContext"; // Import the useAuth hook
 
 export default function GoogleLogin() {
