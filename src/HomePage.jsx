@@ -122,14 +122,14 @@ export default function HomePage() {
           <div className="text-center lg:text-left">
             <h3 className="text-4xl font-bold mb-4 text-purple-700">About Us</h3>
             <p className="text-lg text-gray-700 leading-relaxed">
-              At NextGenApps.ai, we are passionate developers and designers committed to shaping the future with AI. From solopreneurs to enterprises, our solutions help everyone harness the power of intelligent automation to work smarter.
+              At NextGen Apps Inc., we are passionate developers and designers committed to shaping the future with AI. From solopreneurs to enterprises, our solutions help everyone harness the power of intelligent automation to work smarter.
             </p>
           </div>
         </section>
       </main>
 
       <footer className="bg-gray-900 text-white text-center p-8 mt-24 rounded-t-3xl">
-        <p className="text-sm">&copy; {new Date().getFullYear()} NextGenApps INC. All rights reserved.</p>
+        <p className="text-sm">&copy; {new Date().getFullYear()} NextGen Apps Inc. All rights reserved.</p>
       </footer>
     </div>
   );
